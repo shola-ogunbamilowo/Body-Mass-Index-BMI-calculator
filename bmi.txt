@@ -1,0 +1,109 @@
+//A BMI CALCULATOR assignment using getter setter method 
+
+import java.util.Scanner;
+
+public class MyClass {
+    public static void main (String[] args){
+        Scanner sc = new Scanner(System.in);
+     
+        MyClass2 myObj = new MyClass2();
+        
+        System.out.println("BODY MASS INDEX(BMI) CALCULATOR ");
+        System.out.println("BMI CATEGORIES: " + "UNDERWEIGHT(< 18.5)" + "  NORMAL WEIGHT(18.5 - 25.0)" + "   OVERWEIGHT(25.0 - 30.0)" + "   OBESITY(> 30.0)");
+        
+        System.out.print("\n");
+        System.out.print("input your weight: ");
+        myObj.setWeight(sc.nextDouble());
+        
+        System.out.println("input your height(Feet|Inches)!");
+        System.out.print("Feet: ");
+        myObj.setHeight(sc.nextDouble());
+      
+        System.out.print("Inches: ");
+        myObj.setHeight1(sc.nextDouble());
+        
+         System.out.println("Your BMI = " + (Math.round(myObj.getCompute() * 10.0)/ 10.0));
+         System.out.print(myObj.getComputeNote());
+    }
+    }
+
+
+
+
+
+
+
+
+public class MyClass2 {
+    
+    private double weight, height, height1, sum, compute, computeNote;
+    
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+    
+    public double getWeight(){
+        return weight;
+    }
+    
+    public void setHeight(double height){
+        this.height = height;
+    }
+    
+    public double getHeight(){
+        return height;
+    }
+    
+    public void setHeight1(double height1){
+        this.height1 = height1;
+    }
+    
+    public double getHeight1(){
+        return height1;
+    }
+    
+    public void setSum(double sum){
+        this.sum = sum;
+    }
+    
+    public double getSum(){
+        return sum;
+    }
+    
+    public void setCompute(double compute){
+        this.compute = compute;
+    }
+    
+    public double getCompute(){
+        height = height * 12;
+        height1 = height1 + height;
+        sum = Math.pow(height1, 2);
+        compute = weight * 703 / sum;
+        return  compute;
+    }
+    
+     public void setComputeNote(double computeNote){
+         this.computeNote = computeNote;
+     }
+    
+    public double getComputeNote(){
+        if(compute > 1.0 && compute < 18.5){
+         System.out.println("\nYour result Suggested that you are UNDERWEIGHT!");
+         System.out.println("\nNOTE: If you are receiving treatment for an eating disorder, there may be an underlying medical cause for your weight \nor your diet may not be providing you with enough calories. We suggest you discuss this with your GP!");
+         }else if(compute > 18.5 && compute < 25.0){
+         System.out.println("\nYour result Suggested that you have a NORMAL WEIGHT!");
+         System.out.println("\nNOTE: We suggest you maintain your Weight!");
+         }else if(compute > 25.0 && compute < 30.0){
+         System.out.println("\nYour result Suggested that you are OVERWEIGHT!");
+         System.out.println("\nNOTE: Your health would really benefit from gradually losing 5% of your current weight. \nThe best way to lose weight is through a combination of diet and exercise.\nIf you are concerned about your weight, we suggest you discuss this with your GP!");
+         }else if(compute > 30.0 && compute < 100.0){
+         System.out.println("\nYour result Suggested that you are OBESE!");
+         System.out.println("\nNOTE: Losing & keeping off 7% of your weight can have health benefits, such as lowering your blood pressure \nand reducing your risk of developing type2 diabetes. \nOver time, you should work towards achieving a healthier weight. If you are concerned about your weight, we suggest you discuss this with your GP!");
+         }else{
+             System.out.println("Please Enter a valid Credentials!");
+         }
+         return computeNote;
+    } 
+}
+
+
